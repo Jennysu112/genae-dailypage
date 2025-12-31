@@ -1,462 +1,434 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6f0ec3; -webkit-text-stroke: #6f0ec3}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #0e6e6d; -webkit-text-stroke: #0e6e6d}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #18702b; -webkit-text-stroke: #18702b}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000; min-height: 16.0px}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4d5055; -webkit-text-stroke: #4d5055}
-    span.s1 {font-kerning: none; color: #6f0ec3; background-color: #ecf1f7; -webkit-text-stroke: 0px #6f0ec3}
-    span.s2 {font-kerning: none; background-color: #ecf1f7}
-    span.s3 {font-kerning: none; color: #0e6e6d; background-color: #ecf1f7; -webkit-text-stroke: 0px #0e6e6d}
-    span.s4 {font-kerning: none; color: #18702b; background-color: #ecf1f7; -webkit-text-stroke: 0px #18702b}
-    span.s5 {font-kerning: none; color: #000000; background-color: #ecf1f7; -webkit-text-stroke: 0px #000000}
-    span.s6 {font-kerning: none}
-    span.s7 {font-kerning: none; color: #bf1c25; background-color: #ecf1f7; -webkit-text-stroke: 0px #bf1c25}
-    span.s8 {font-kerning: none; color: #a4450b; background-color: #ecf1f7; -webkit-text-stroke: 0px #a4450b}
-  </style>
-</head>
-<body>
-<p class="p1"><span class="s1">import</span><span class="s2"> </span><span class="s3">React</span><span class="s2">, { useState, useEffect } </span><span class="s1">from</span><span class="s2"> </span><span class="s4">'react'</span><span class="s2">;</span></p>
-<p class="p2"><span class="s2">import</span><span class="s5"> {<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">Calendar</span><span class="s5"> </span><span class="s1">as</span><span class="s5"> </span><span class="s2">CalendarIcon</span><span class="s5">, </span><span class="s2">CheckCircle</span><span class="s5">, </span><span class="s2">Plus</span><span class="s5">, </span><span class="s2">Home</span><span class="s5">,<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">BookOpen</span><span class="s5">, </span><span class="s2">ChevronRight</span><span class="s5">, </span><span class="s2">Droplets</span><span class="s5">, </span><span class="s2">Sparkles</span><span class="s5">, </span><span class="s2">Coffee</span><span class="s5">,<span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">Camera</span><span class="s5">, </span><span class="s2">Trash2</span><span class="s5">, </span><span class="s2">Target</span><span class="s5">, </span><span class="s2">Settings</span><span class="s5">, </span><span class="s2">RefreshCw</span><span class="s5">, </span><span class="s2">Quote</span></p>
-<p class="p4"><span class="s5">} </span><span class="s1">from</span><span class="s5"> </span><span class="s2">'lucide-react'</span><span class="s5">;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s2">// --- 🦕 Interactive Dino Component ---</span></p>
-<p class="p1"><span class="s1">const</span><span class="s2"> </span><span class="s3">DinoMascot</span><span class="s2"> = ({ message, isHappy }) =&gt; {</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">return</span><span class="s5"> (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span>&lt;div className=</span><span class="s2">"relative w-24 h-24 flex justify-center items-end group"</span><span class="s5">&gt;</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* Speech Bubble */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className={</span><span class="s2">`absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white border border-stone-100 px-3 py-2 rounded-2xl shadow-sm text-xs text-gray-600 whitespace-nowrap transition-all duration-300 z-10 </span><span class="s5">${message ? </span><span class="s2">'opacity-100 scale-100 translate-y-0'</span><span class="s5"> : </span><span class="s2">'opacity-0 scale-95 translate-y-2'</span><span class="s5">}</span><span class="s2">`</span><span class="s5">}&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>{message}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s2">"absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white border-b border-r border-stone-100 rotate-45"</span><span class="s5">&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* The Dino Emoji with Animations */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className={</span><span class="s2">`text-[80px] leading-none filter drop-shadow-sm cursor-default select-none transition-transform duration-500 </span><span class="s5">${isHappy ? </span><span class="s2">'animate-bounce scale-110'</span><span class="s5"> : </span><span class="s2">'hover:scale-105'</span><span class="s5">}</span><span class="s2">`</span><span class="s5">}&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s7">🦕</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">      </span></span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* Sparkles when happy */</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>{isHappy &amp;&amp; (</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">          </span>&lt;div className=</span><span class="s2">"absolute top-0 left-0 text-xl animate-ping"</span><span class="s5">&gt;</span><span class="s7">✨</span><span class="s5">&lt;/div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">          </span>&lt;div className=</span><span class="s2">"absolute top-4 right-0 text-xl animate-ping delay-100"</span><span class="s5">&gt;</span><span class="s7">🎉</span><span class="s5">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>)}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>);</span></p>
-<p class="p1"><span class="s2">};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s2">// --- Encouraging Messages Library ---</span></p>
-<p class="p3"><span class="s1">const</span><span class="s5"> </span><span class="s2">MESSAGES</span><span class="s5"> = {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>water: [</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"咕嚕咕嚕～好清爽！💦"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"皮膚變水水了～✨"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"補充能量，再來一杯！💪"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"好習慣 +1！🥰"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"哇！你好健康喔！🥤"</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>],</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>habit: [</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"你今天超棒的！🌟"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"一點一滴都在累積！🌱"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"為你感到驕傲！💖"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"太厲害了！繼續保持～🔥"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"這就是成長的聲音！🎵"</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>],</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>goal: [</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"目標達成！太神啦！🎉"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"哇！你真的做到了！🏆"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"夢想又近了一步！🚀"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"閃閃發光的你！✨"</span><span class="s5">,</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">"太感動了！抱一個！🦕"</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>],</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s1">default</span><span class="s5">: </span><span class="s2">"GENAE Life OS"</span></p>
-<p class="p1"><span class="s2">};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s2">// --- Quotes Library ---</span></p>
-<p class="p3"><span class="s1">const</span><span class="s5"> </span><span class="s2">QUOTES</span><span class="s5"> = [</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Be gentle with yourself."</span><span class="s5">, zh: </span><span class="s2">"對自己溫柔一點。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Slow down."</span><span class="s5">, zh: </span><span class="s2">"慢下來，風景很美。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Trust the timing."</span><span class="s5">, zh: </span><span class="s2">"相信生命的時區。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"You are enough."</span><span class="s5">, zh: </span><span class="s2">"你已經足夠好了。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Protect your peace."</span><span class="s5">, zh: </span><span class="s2">"守護你內心的平靜。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Small steps count."</span><span class="s5">, zh: </span><span class="s2">"每一小步都算數。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Rest is productive."</span><span class="s5">, zh: </span><span class="s2">"休息也是一種生產力。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Stay patient."</span><span class="s5">, zh: </span><span class="s2">"保持耐心，花會開的。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Focus on the good."</span><span class="s5">, zh: </span><span class="s2">"專注在美好的事物上。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Progress, not perfection."</span><span class="s5">, zh: </span><span class="s2">"追求進步，而非完美。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"You are loved."</span><span class="s5">, zh: </span><span class="s2">"你被深深愛著。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"Keep going."</span><span class="s5">, zh: </span><span class="s2">"繼續前進。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"You matter."</span><span class="s5">, zh: </span><span class="s2">"你很重要。"</span><span class="s5"> },</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>{ en: </span><span class="s2">"The best is yet to come."</span><span class="s5">, zh: </span><span class="s2">"最好的尚未到來。"</span><span class="s5"> }</span></p>
-<p class="p1"><span class="s2">];</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s2">// --- Helper Components ---</span></p>
-<p class="p1"><span class="s1">const</span><span class="s2"> </span><span class="s3">Card</span><span class="s2"> = ({ title, icon: </span><span class="s3">Icon</span><span class="s2">, colorClass, children, className = </span><span class="s4">""</span><span class="s2"> }) =&gt; (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">  </span>&lt;div className={</span><span class="s2">`bg-white p-5 rounded-3xl shadow-sm border border-stone-50 mb-4 hover:shadow-md transition-shadow </span><span class="s5">${className}</span><span class="s2">`</span><span class="s5">}&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>{title &amp;&amp; (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"flex justify-between items-center mb-4"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s2">"flex items-center gap-2"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>{</span><span class="s3">Icon</span><span class="s2"> &amp;&amp; &lt;div className={</span><span class="s4">`p-1.5 rounded-full </span><span class="s2">${colorClass || </span><span class="s4">'bg-gray-100'</span><span class="s2">}</span><span class="s4"> text-gray-600`</span><span class="s2">}&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;</span><span class="s3">Icon</span><span class="s2"> size={</span><span class="s8">16</span><span class="s2">} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;/div&gt;}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">          </span>&lt;h3 className=</span><span class="s2">"font-bold text-gray-700 text-sm tracking-wide"</span><span class="s5">&gt;{title}&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>)}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>{children}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2">);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s1">const</span><span class="s2"> </span><span class="s3">IconButton</span><span class="s2"> = ({ icon: </span><span class="s3">Icon</span><span class="s2">, label, active, onClick }) =&gt; (</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>&lt;button<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>onClick={onClick}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span>className={</span><span class="s2">`flex flex-col items-center justify-center w-full py-2 transition-all duration-300 </span><span class="s5">${active ? </span><span class="s2">'text-[#C5A059] -translate-y-1'</span><span class="s5"> : </span><span class="s2">'text-gray-300 hover:text-gray-400'</span><span class="s5">}</span><span class="s2">`</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;</span><span class="s3">Icon</span><span class="s2"> size={</span><span class="s8">24</span><span class="s2">} strokeWidth={active ? </span><span class="s8">2.5</span><span class="s2"> : </span><span class="s8">2</span><span class="s2">} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;span className=</span><span class="s4">"text-[10px] mt-1 font-medium"</span><span class="s2">&gt;{label}&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2">);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s2">// --- Main App ---</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s1">const</span><span class="s2"> </span><span class="s3">App</span><span class="s2"> = () =&gt; {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [activeTab, setActiveTab] = useState(</span><span class="s4">'daily'</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [selectedDate, setSelectedDate] = useState(</span><span class="s1">new</span><span class="s2"> </span><span class="s3">Date</span><span class="s2">());</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">  </span></span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// Interaction States</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [petMessage, setPetMessage] = useState(</span><span class="s4">"我是你的恐龍夥伴 🦕"</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [isDinoHappy, setIsDinoHappy] = useState(</span><span class="s1">false</span><span class="s2">);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">  </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [waterCount, setWaterCount] = useState(</span><span class="s8">3</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [mood, setMood] = useState(</span><span class="s4">'neutral'</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [currentQuote, setCurrentQuote] = useState(</span><span class="s3">QUOTES</span><span class="s2">[</span><span class="s8">0</span><span class="s2">]);</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">  </span></span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// Data States</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [habits, setHabits] = useState([</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>{ id: </span><span class="s8">1</span><span class="s2">, text: </span><span class="s4">"冥想 10 分鐘"</span><span class="s2">, done: </span><span class="s1">true</span><span class="s2"> },</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>{ id: </span><span class="s8">2</span><span class="s2">, text: </span><span class="s4">"閱讀 10 頁"</span><span class="s2">, done: </span><span class="s1">false</span><span class="s2"> },</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>]);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [newHabit, setNewHabit] = useState(</span><span class="s4">""</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [journalText, setJournalText] = useState(</span><span class="s4">""</span><span class="s2">);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> [goals, setGoals] = useState([</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>{ id: </span><span class="s8">1</span><span class="s2">, text: </span><span class="s4">"年度存款計畫"</span><span class="s2">, current: </span><span class="s8">40</span><span class="s2">, target: </span><span class="s8">100</span><span class="s2"> },</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>{ id: </span><span class="s8">2</span><span class="s2">, text: </span><span class="s4">"體態雕塑"</span><span class="s2">, current: </span><span class="s8">65</span><span class="s2">, target: </span><span class="s8">100</span><span class="s2"> },</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>]);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// --- Logic Functions ---</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> triggerFeedback = (</span><span class="s1">type</span><span class="s2">) =&gt; {</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">// 1. Animation</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setIsDinoHappy(</span><span class="s1">true</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setTimeout(() =&gt; setIsDinoHappy(</span><span class="s1">false</span><span class="s2">), </span><span class="s8">2000</span><span class="s2">);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">// 2. Pick random message</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">const</span><span class="s2"> messages = </span><span class="s3">MESSAGES</span><span class="s2">[</span><span class="s1">type</span><span class="s2">] || [</span><span class="s3">MESSAGES</span><span class="s2">.</span><span class="s1">default</span><span class="s2">];</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">const</span><span class="s2"> randomMsg = messages[</span><span class="s3">Math</span><span class="s2">.floor(</span><span class="s3">Math</span><span class="s2">.random() * messages.length)];</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setPetMessage(randomMsg);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">// 3. Clear message after delay</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setTimeout(() =&gt; setPetMessage(</span><span class="s4">""</span><span class="s2">), </span><span class="s8">3500</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> handleWater = (idx) =&gt; {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setWaterCount(idx + </span><span class="s8">1</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>triggerFeedback(</span><span class="s4">'water'</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> addHabit = (e) =&gt; {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">if</span><span class="s2"> (e.key === </span><span class="s4">'Enter'</span><span class="s2"> &amp;&amp; newHabit.trim()) {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>setHabits([...habits, { id: </span><span class="s3">Date</span><span class="s2">.now(), text: newHabit, done: </span><span class="s1">false</span><span class="s2"> }]);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>setNewHabit(</span><span class="s4">""</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>triggerFeedback(</span><span class="s4">'habit'</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> toggleHabit = (id) =&gt; {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setHabits(habits.map(h =&gt; {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s1">if</span><span class="s2"> (h.id === id) {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s1">const</span><span class="s2"> isDone = !h.done;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s1">if</span><span class="s2"> (isDone) triggerFeedback(</span><span class="s4">'habit'</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s1">return</span><span class="s2"> { ...h, done: isDone };</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span></span><span class="s1">return</span><span class="s2"> h;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>}));</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> handleGoalChange = (index, newValue, target) =&gt; {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">const</span><span class="s2"> newGoals = [...goals];</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>newGoals[index].current = newValue;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setGoals(newGoals);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s2">// Trigger celebration if goal reached 100%</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">if</span><span class="s2"> (newValue == target) {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>triggerFeedback(</span><span class="s4">'goal'</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> refreshQuote = () =&gt; {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">let</span><span class="s2"> random;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">do</span><span class="s2"> {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>random = </span><span class="s3">QUOTES</span><span class="s2">[</span><span class="s3">Math</span><span class="s2">.floor(</span><span class="s3">Math</span><span class="s2">.random() * </span><span class="s3">QUOTES</span><span class="s2">.length)];</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>} </span><span class="s1">while</span><span class="s2"> (random === currentQuote);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setCurrentQuote(random);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setPetMessage(</span><span class="s4">"這句靈感送給你 ✨"</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>setTimeout(() =&gt; setPetMessage(</span><span class="s4">""</span><span class="s2">), </span><span class="s8">2000</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// --- Views ---</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// 1. DAILY VIEW</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> </span><span class="s3">DailyView</span><span class="s2"> = () =&gt; (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span>&lt;div className=</span><span class="s2">"space-y-4 animate-fade-in pb-24"</span><span class="s5">&gt;</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* Header &amp; Dino */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"flex justify-between items-end mb-2 px-2"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">           </span>&lt;p className=</span><span class="s2">"text-xs text-gray-400 font-bold tracking-widest uppercase"</span><span class="s5">&gt;</span><span class="s3">Dec</span><span class="s5"> </span><span class="s8">31</span><span class="s5">, </span><span class="s3">Wed</span><span class="s5">&lt;/p&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">           </span>&lt;h1 className=</span><span class="s2">"text-2xl font-serif text-gray-800 font-bold mt-1"</span><span class="s5">&gt;</span><span class="s3">Hello</span><span class="s5">, </span><span class="s3">Genae</span><span class="s5">&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">        </span>{</span><span class="s2">/* Pass props to control animation */</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;</span><span class="s3">DinoMascot</span><span class="s2"> message={petMessage} isHappy={isDinoHappy} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* Quote Card */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"bg-[#FDFBF7] p-5 rounded-3xl border border-[#C5A059]/20 relative overflow-hidden group hover:shadow-sm transition-all"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">         </span>&lt;div className=</span><span class="s2">"absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;button onClick={refreshQuote} className=</span><span class="s2">"text-[#C5A059] hover:rotate-180 transition-transform duration-500 bg-white rounded-full p-1 shadow-sm"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;</span><span class="s3">RefreshCw</span><span class="s2"> size={</span><span class="s8">14</span><span class="s2">} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;div className=</span><span class="s4">"flex gap-3"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;</span><span class="s3">Quote</span><span class="s5"> size={</span><span class="s8">20</span><span class="s5">} className=</span><span class="s2">"text-[#C5A059] flex-shrink-0 fill-[#C5A059]/20"</span><span class="s5"> /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;div className=</span><span class="s4">"flex-1"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">               </span>&lt;p className=</span><span class="s2">"text-gray-700 font-serif italic text-lg leading-relaxed"</span><span class="s5">&gt;{currentQuote.en}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;p className=</span><span class="s4">"text-xs text-gray-400 mt-2 tracking-wide"</span><span class="s2">&gt;{currentQuote.zh}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* Grid: Water &amp; Mood */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"grid grid-cols-2 gap-3"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;</span><span class="s3">Card</span><span class="s2"> title=</span><span class="s4">"喝水"</span><span class="s2"> icon={</span><span class="s3">Droplets</span><span class="s2">} colorClass=</span><span class="s4">"bg-blue-100"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;div className=</span><span class="s4">"grid grid-cols-4 gap-2"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>{[...</span><span class="s3">Array</span><span class="s2">(</span><span class="s8">8</span><span class="s2">)].map((_, i) =&gt; (</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>&lt;button key={i} onClick={() =&gt; handleWater(i)} className={</span><span class="s4">`aspect-square rounded-md transition-all duration-300 </span><span class="s2">${i &lt; waterCount ? </span><span class="s4">'bg-blue-400 scale-100'</span><span class="s2"> : </span><span class="s4">'bg-blue-50 scale-90'</span><span class="s2">}</span><span class="s4">`</span><span class="s2">} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>))}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">          </span>&lt;p className=</span><span class="s2">"text-[10px] text-gray-400 mt-2 text-right"</span><span class="s5">&gt;{waterCount}/</span><span class="s8">8</span><span class="s5"> </span><span class="s7">杯</span><span class="s5">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/</span><span class="s3">Card</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;</span><span class="s3">Card</span><span class="s2"> title=</span><span class="s4">"心情"</span><span class="s2"> icon={</span><span class="s3">Sparkles</span><span class="s2">} colorClass=</span><span class="s4">"bg-yellow-100"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">           </span>&lt;div className=</span><span class="s2">"flex justify-between items-center h-full"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>{[</span><span class="s4">'sad'</span><span class="s2">, </span><span class="s4">'neutral'</span><span class="s2">, </span><span class="s4">'happy'</span><span class="s2">].map(m =&gt; (</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;button key={m} onClick={() =&gt; { setMood(m); setPetMessage(</span><span class="s4">"心情記錄完成 📝"</span><span class="s2">); setTimeout(() =&gt; setPetMessage(</span><span class="s4">""</span><span class="s2">), </span><span class="s8">2000</span><span class="s2">); }} className={</span><span class="s4">`text-2xl transition-transform </span><span class="s2">${mood === m ? </span><span class="s4">'scale-125'</span><span class="s2"> : </span><span class="s4">'opacity-40 grayscale'</span><span class="s2">}</span><span class="s4">`</span><span class="s2">}&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>{m === </span><span class="s4">'sad'</span><span class="s2"> ? </span><span class="s4">'😢'</span><span class="s2"> : m === </span><span class="s4">'neutral'</span><span class="s2"> ? </span><span class="s4">'😐'</span><span class="s2"> : </span><span class="s4">'🤩'</span><span class="s2">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">              </span>))}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/</span><span class="s3">Card</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* Habits */</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;</span><span class="s3">Card</span><span class="s2"> title=</span><span class="s4">"原子習慣"</span><span class="s2"> icon={</span><span class="s3">CheckCircle</span><span class="s2">} colorClass=</span><span class="s4">"bg-green-100"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>{habits.map(h =&gt; (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">           </span>&lt;div key={h.id} className=</span><span class="s2">"flex items-center mb-3 last:mb-0 group"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">             </span>&lt;button onClick={() =&gt; toggleHabit(h.id)} className={</span><span class="s2">`w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center transition-colors </span><span class="s5">${h.done ? </span><span class="s2">'bg-[#C5A059] border-[#C5A059]'</span><span class="s5"> : </span><span class="s2">'border-gray-200'</span><span class="s5">}</span><span class="s2">`</span><span class="s5">}&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>{h.done &amp;&amp; &lt;</span><span class="s3">CheckCircle</span><span class="s2"> size={</span><span class="s8">12</span><span class="s2">} className=</span><span class="s4">"text-white"</span><span class="s2"> /&gt;}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">             </span>&lt;/button&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">             </span>&lt;span className={</span><span class="s2">`flex-1 text-sm transition-all </span><span class="s5">${h.done ? </span><span class="s2">'text-gray-300 line-through'</span><span class="s5"> : </span><span class="s2">'text-gray-700'</span><span class="s5">}</span><span class="s2">`</span><span class="s5">}&gt;{h.text}&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">             </span>&lt;button onClick={() =&gt; setHabits(habits.filter(i =&gt; i.id !== h.id))}&gt;&lt;</span><span class="s3">Trash2</span><span class="s2"> size={</span><span class="s8">14</span><span class="s2">} className=</span><span class="s4">"text-gray-300 opacity-0 group-hover:opacity-100"</span><span class="s2"> /&gt;&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>))}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;input<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span></span><span class="s1">type</span><span class="s2">=</span><span class="s4">"text"</span><span class="s2"><span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>placeholder=</span><span class="s4">"+ 新增習慣 (Enter)..."</span><span class="s2"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">           </span>className=</span><span class="s2">"w-full mt-3 text-sm bg-transparent outline-none placeholder-gray-300"</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>value={newHabit}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>onChange={(e) =&gt; setNewHabit(e.target.value)}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>onKeyDown={addHabit}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>/&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/</span><span class="s3">Card</span><span class="s2">&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">      </span>{</span><span class="s2">/* Quick Actions */</span><span class="s5">}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"grid grid-cols-2 gap-3"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">         </span>&lt;button className=</span><span class="s2">"bg-white p-4 rounded-3xl border border-stone-50 flex items-center gap-3 hover:border-[#C5A059] transition-colors group"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;div className=</span><span class="s2">"bg-purple-50 p-2 rounded-full text-purple-400 group-hover:bg-purple-100"</span><span class="s5">&gt;&lt;</span><span class="s3">Camera</span><span class="s5"> size={</span><span class="s8">18</span><span class="s5">} /&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;span className=</span><span class="s4">"text-xs font-bold text-gray-600"</span><span class="s2">&gt;</span><span class="s3">OOTD</span><span class="s2">&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;/button&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">         </span>&lt;button className=</span><span class="s2">"bg-white p-4 rounded-3xl border border-stone-50 flex items-center gap-3 hover:border-[#C5A059] transition-colors group"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;div className=</span><span class="s2">"bg-orange-50 p-2 rounded-full text-orange-400 group-hover:bg-orange-100"</span><span class="s5">&gt;&lt;</span><span class="s3">Coffee</span><span class="s5"> size={</span><span class="s8">18</span><span class="s5">} /&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;span className=</span><span class="s4">"text-xs font-bold text-gray-600"</span><span class="s2">&gt;</span><span class="s7">飲食</span><span class="s2">&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// 2. TIMELINE VIEW</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> </span><span class="s3">CalendarView</span><span class="s2"> = () =&gt; {</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">const</span><span class="s2"> days = </span><span class="s3">Array</span><span class="s2">.</span><span class="s1">from</span><span class="s2">({ length: </span><span class="s8">31</span><span class="s2"> }, (_, i) =&gt; i + </span><span class="s8">1</span><span class="s2">);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s1">return</span><span class="s2"> (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"space-y-4 animate-fade-in pb-24"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;div className=</span><span class="s4">"px-2 mb-2"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;h1 className=</span><span class="s2">"text-2xl font-serif text-gray-800 font-bold"</span><span class="s5">&gt;</span><span class="s3">Timeline</span><span class="s5">&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;p className=</span><span class="s4">"text-xs text-gray-400"</span><span class="s2">&gt;</span><span class="s7">時光回顧</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">         </span>&lt;div className=</span><span class="s2">"bg-white p-5 rounded-3xl shadow-sm border border-stone-50"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;div className=</span><span class="s2">"flex justify-between items-center mb-4"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;h2 className=</span><span class="s4">"font-bold text-gray-700"</span><span class="s2">&gt;</span><span class="s3">December</span><span class="s2"> </span><span class="s8">2025</span><span class="s2">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;div className=</span><span class="s4">"flex gap-2"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;button className=</span><span class="s4">"p-1 hover:bg-gray-100 rounded"</span><span class="s2">&gt;&lt;</span><span class="s3">ChevronRight</span><span class="s2"> size={</span><span class="s8">16</span><span class="s2">} className=</span><span class="s4">"rotate-180"</span><span class="s2"> /&gt;&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;button className=</span><span class="s4">"p-1 hover:bg-gray-100 rounded"</span><span class="s2">&gt;&lt;</span><span class="s3">ChevronRight</span><span class="s2"> size={</span><span class="s8">16</span><span class="s2">} /&gt;&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;div className=</span><span class="s2">"grid grid-cols-7 gap-2 text-center text-xs mb-2 text-gray-300 font-bold"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>{[</span><span class="s4">'S'</span><span class="s2">,</span><span class="s4">'M'</span><span class="s2">,</span><span class="s4">'T'</span><span class="s2">,</span><span class="s4">'W'</span><span class="s2">,</span><span class="s4">'T'</span><span class="s2">,</span><span class="s4">'F'</span><span class="s2">,</span><span class="s4">'S'</span><span class="s2">].map(d =&gt; &lt;div key={d}&gt;{d}&lt;/div&gt;)}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;div className=</span><span class="s2">"grid grid-cols-7 gap-y-3 gap-x-1"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;div className=</span><span class="s4">"col-span-3"</span><span class="s2">&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>{days.map(d =&gt; (</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                 </span>&lt;button<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                   </span>key={d}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                   </span>onClick={() =&gt; setSelectedDate(</span><span class="s1">new</span><span class="s2"> </span><span class="s3">Date</span><span class="s2">(</span><span class="s8">2025</span><span class="s2">, </span><span class="s8">11</span><span class="s2">, d))}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                   </span>className={</span><span class="s2">`h-8 w-8 rounded-full flex flex-col items-center justify-center text-xs relative transition-all </span><span class="s5">${selectedDate.getDate() === d ? </span><span class="s2">'bg-[#C5A059] text-white shadow-lg'</span><span class="s5"> : </span><span class="s2">'text-gray-600 hover:bg-gray-100'</span><span class="s5">}</span><span class="s2">`</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                 </span>&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                   </span>{d}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                   </span>{d &lt; </span><span class="s8">31</span><span class="s2"> &amp;&amp; &lt;div className={</span><span class="s4">`w-1 h-1 rounded-full mt-0.5 </span><span class="s2">${d % </span><span class="s8">4</span><span class="s2"> === </span><span class="s8">0</span><span class="s2"> ? </span><span class="s4">'bg-yellow-400'</span><span class="s2"> : </span><span class="s4">'bg-gray-200'</span><span class="s2">}</span><span class="s4">`</span><span class="s2">}&gt;&lt;/div&gt;}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                 </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>))}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;</span><span class="s3">Card</span><span class="s2"> title={</span><span class="s4">`</span><span class="s2">${selectedDate.getDate()}</span><span class="s4"> Dec 的日記`</span><span class="s2">} icon={</span><span class="s3">BookOpen</span><span class="s2">} colorClass=</span><span class="s4">"bg-gray-100"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;div className=</span><span class="s4">"space-y-4"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;div className=</span><span class="s4">"flex items-start gap-3"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                  </span>&lt;div className=</span><span class="s2">"bg-yellow-50 p-2 rounded-full text-yellow-500 text-xs"</span><span class="s5">&gt;</span><span class="s3">Mood</span><span class="s5">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                     </span>&lt;p className=</span><span class="s4">"text-sm text-gray-700"</span><span class="s2">&gt;</span><span class="s7">🙂</span><span class="s2"> </span><span class="s7">平靜充實</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;div className=</span><span class="s4">"pt-2 border-t border-gray-100"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;textarea<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                    </span>className=</span><span class="s2">"w-full bg-[#F9F9F9] rounded-xl p-3 text-sm text-gray-600 outline-none resize-none focus:bg-white focus:ring-1 focus:ring-[#C5A059]"</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>rows=</span><span class="s4">"4"</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>placeholder=</span><span class="s4">"點擊輸入那天的回憶..."</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>defaultValue={selectedDate.getDate() === </span><span class="s8">31</span><span class="s2"> ? journalText : </span><span class="s4">""</span><span class="s2">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                    </span>onChange={(e) =&gt; setJournalText(e.target.value)}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>/&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">         </span>&lt;/</span><span class="s3">Card</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>);</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">// 3. VISION VIEW</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">const</span><span class="s2"> </span><span class="s3">VisionView</span><span class="s2"> = () =&gt; (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span>&lt;div className=</span><span class="s2">"space-y-4 animate-slide-up pb-24"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s4">"px-2 mb-2"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">            </span>&lt;h1 className=</span><span class="s2">"text-2xl font-serif text-gray-800 font-bold"</span><span class="s5">&gt;</span><span class="s3">Vision</span><span class="s5">&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;p className=</span><span class="s4">"text-xs text-gray-400"</span><span class="s2">&gt;</span><span class="s7">種下你的未來</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s2">"bg-[#2C2C2C] p-6 rounded-3xl text-white shadow-lg relative overflow-hidden group"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">           </span>&lt;div className=</span><span class="s2">"absolute -bottom-10 -right-10 w-40 h-40 bg-[#C5A059] rounded-full blur-[60px] opacity-20 group-hover:opacity-30 transition-opacity"</span><span class="s5">&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>&lt;h2 className=</span><span class="s4">"font-serif text-xl mb-1"</span><span class="s2">&gt;</span><span class="s8">2025</span><span class="s2"> </span><span class="s3">Keywords</span><span class="s2">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>&lt;p className=</span><span class="s4">"text-xs text-gray-400 mb-6"</span><span class="s2">&gt;</span><span class="s7">保持專注，溫柔堅定</span><span class="s2">&lt;/p&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">           </span>&lt;div className=</span><span class="s2">"flex flex-wrap gap-2 relative z-10"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">              </span>&lt;span className=</span><span class="s2">"px-3 py-1 bg-white/10 rounded-full text-xs border border-white/10 backdrop-blur-md"</span><span class="s5">&gt;</span><span class="s7">✨</span><span class="s5"> </span><span class="s7">勇敢</span><span class="s5">&lt;/span&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">              </span>&lt;span className=</span><span class="s2">"px-3 py-1 bg-white/10 rounded-full text-xs border border-white/10 backdrop-blur-md"</span><span class="s5">&gt;</span><span class="s7">🌿</span><span class="s5"> </span><span class="s7">平靜</span><span class="s5">&lt;/span&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">              </span>&lt;span className=</span><span class="s2">"px-3 py-1 bg-white/10 rounded-full text-xs border border-white/10 backdrop-blur-md"</span><span class="s5">&gt;</span><span class="s7">💰</span><span class="s5"> </span><span class="s7">自由</span><span class="s5">&lt;/span&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">              </span>&lt;button className=</span><span class="s2">"w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs hover:bg-white/20"</span><span class="s5">&gt;+&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;</span><span class="s3">Card</span><span class="s2"> title=</span><span class="s4">"年度目標進度"</span><span class="s2"> icon={</span><span class="s3">Target</span><span class="s2">} colorClass=</span><span class="s4">"bg-red-100"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>{goals.map((g, i) =&gt; (</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">             </span>&lt;div key={g.id} className=</span><span class="s4">"mb-4 last:mb-0"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                </span>&lt;div className=</span><span class="s2">"flex justify-between text-xs mb-1"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                   </span>&lt;span className=</span><span class="s4">"text-gray-700 font-medium"</span><span class="s2">&gt;{g.text}&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                   </span>&lt;span className=</span><span class="s4">"text-[#C5A059]"</span><span class="s2">&gt;{</span><span class="s3">Math</span><span class="s2">.round((g.current/g.target)*</span><span class="s8">100</span><span class="s2">)}%&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                </span>&lt;div className=</span><span class="s2">"h-2 w-full bg-gray-100 rounded-full overflow-hidden"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                   </span>&lt;div className=</span><span class="s4">"h-full bg-[#C5A059] transition-all duration-1000"</span><span class="s2"> style={{width: </span><span class="s4">`</span><span class="s2">${(g.current/g.target)*</span><span class="s8">100</span><span class="s2">}</span><span class="s4">%`</span><span class="s2">}}&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s5"><span class="Apple-converted-space">                </span>{</span><span class="s2">/* Interactive Slider */</span><span class="s5">}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;input<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span></span><span class="s1">type</span><span class="s2">=</span><span class="s4">"range"</span><span class="s2"> min=</span><span class="s4">"0"</span><span class="s2"> max={g.target} value={g.current}<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>onChange={(e) =&gt; handleGoalChange(i, parseInt(e.target.value), g.target)}</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                  </span>className=</span><span class="s2">"w-full mt-2 h-1 opacity-0 hover:opacity-100 cursor-pointer"</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>/&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">             </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>))}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/</span><span class="s3">Card</span><span class="s2">&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;</span><span class="s3">Card</span><span class="s2"> title=</span><span class="s4">"設定"</span><span class="s2"> icon={</span><span class="s3">Settings</span><span class="s2">} colorClass=</span><span class="s4">"bg-gray-200"</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;div className=</span><span class="s4">"space-y-1"</span><span class="s2">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">               </span>&lt;div className=</span><span class="s2">"flex justify-between items-center text-sm text-gray-600 p-2 hover:bg-gray-50 rounded-lg cursor-pointer"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;span&gt;</span><span class="s7">匯出備份</span><span class="s2">&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;</span><span class="s3">ChevronRight</span><span class="s2"> size={</span><span class="s8">16</span><span class="s2">} className=</span><span class="s4">"text-gray-300"</span><span class="s2"> /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">               </span>&lt;div className=</span><span class="s2">"flex justify-between items-center text-sm text-gray-600 p-2 hover:bg-gray-50 rounded-lg cursor-pointer"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                  </span>&lt;span&gt;</span><span class="s7">提醒通知</span><span class="s2">&lt;/span&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">                  </span>&lt;div className=</span><span class="s2">"w-8 h-4 bg-[#C5A059] rounded-full relative"</span><span class="s5">&gt;&lt;div className=</span><span class="s2">"w-3 h-3 bg-white rounded-full absolute right-0.5 top-0.5"</span><span class="s5">&gt;&lt;/div&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">               </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/</span><span class="s3">Card</span><span class="s2">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>);</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">  </span></span><span class="s2">return</span><span class="s5"> (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">    </span>&lt;div className=</span><span class="s2">"flex justify-center items-center min-h-screen bg-[#EAEAEA] font-sans"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">      </span>&lt;div className=</span><span class="s2">"w-full max-w-[390px] h-[844px] bg-[#FAFAFA] relative shadow-2xl overflow-hidden flex flex-col sm:rounded-[40px] sm:border-[8px] sm:border-[#2C2C2C]"</span><span class="s5">&gt;</span></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">        </span></span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s2">"flex-1 overflow-y-auto px-5 py-6 scrollbar-hide pt-12"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>{activeTab === </span><span class="s4">'daily'</span><span class="s2"> &amp;&amp; &lt;</span><span class="s3">DailyView</span><span class="s2"> /&gt;}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>{activeTab === </span><span class="s4">'calendar'</span><span class="s2"> &amp;&amp; &lt;</span><span class="s3">CalendarView</span><span class="s2"> /&gt;}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">           </span>{activeTab === </span><span class="s4">'vision'</span><span class="s2"> &amp;&amp; &lt;</span><span class="s3">VisionView</span><span class="s2"> /&gt;}</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>{activeTab === </span><span class="s4">'daily'</span><span class="s2"> &amp;&amp; (</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">          </span>&lt;div className=</span><span class="s2">"absolute bottom-24 right-6 z-30 animate-slide-up"</span><span class="s5">&gt;</span></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">             </span>&lt;button onClick={() =&gt; triggerFeedback(</span><span class="s2">'default'</span><span class="s5">)} className=</span><span class="s2">"w-14 h-14 bg-[#2C2C2C] rounded-full shadow-lg flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">                </span>&lt;</span><span class="s3">Plus</span><span class="s2"> size={</span><span class="s8">28</span><span class="s2">} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">             </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>)}</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p4"><span class="s5"><span class="Apple-converted-space">        </span>&lt;div className=</span><span class="s2">"h-[90px] bg-white border-t border-gray-100 flex justify-around items-center pb-6 absolute bottom-0 w-full z-20 px-4"</span><span class="s5">&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;</span><span class="s3">IconButton</span><span class="s2"> icon={</span><span class="s3">Home</span><span class="s2">} label=</span><span class="s4">"日常"</span><span class="s2"> active={activeTab === </span><span class="s4">'daily'</span><span class="s2">} onClick={() =&gt; setActiveTab(</span><span class="s4">'daily'</span><span class="s2">)} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;</span><span class="s3">IconButton</span><span class="s2"> icon={</span><span class="s3">CalendarIcon</span><span class="s2">} label=</span><span class="s4">"時光"</span><span class="s2"> active={activeTab === </span><span class="s4">'calendar'</span><span class="s2">} onClick={() =&gt; setActiveTab(</span><span class="s4">'calendar'</span><span class="s2">)} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">          </span>&lt;</span><span class="s3">IconButton</span><span class="s2"> icon={</span><span class="s3">Target</span><span class="s2">} label=</span><span class="s4">"願景"</span><span class="s2"> active={activeTab === </span><span class="s4">'vision'</span><span class="s2">} onClick={() =&gt; setActiveTab(</span><span class="s4">'vision'</span><span class="s2">)} /&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;style jsx </span><span class="s1">global</span><span class="s2">&gt;{</span><span class="s4">`</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap');</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span>body { font-family: 'Noto Sans TC', sans-serif; }</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span>.font-serif { font-family: 'Playfair Display', serif; }</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span>.scrollbar-hide::-webkit-scrollbar { display: none; }</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span>.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span>.animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span>.animate-slide-up { animation: slideUp 0.4s ease-out forwards; }</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span>@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }</span></p>
-<p class="p4"><span class="s2"><span class="Apple-converted-space">        </span>@keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">      </span>`</span><span class="s2">}&lt;/style&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>);</span></p>
-<p class="p1"><span class="s2">};</span></p>
-<p class="p5"><span class="s6"></span><br></p>
-<p class="p2"><span class="s2">export</span><span class="s5"> </span><span class="s2">default</span><span class="s5"> </span><span class="s3">App</span><span class="s5">;</span></p>
-</body>
-</html>
+import React, { useState, useEffect } from 'react';
+import { 
+  Calendar as CalendarIcon, CheckCircle, Plus, Home, 
+  BookOpen, ChevronRight, Droplets, Sparkles, Coffee, 
+  Camera, Trash2, Target, Settings, RefreshCw, Quote
+} from 'lucide-react';
+
+// --- 🦕 Interactive Dino Component ---
+const DinoMascot = ({ message, isHappy }) => {
+  return (
+    <div className="relative w-24 h-24 flex justify-center items-end group">
+      {/* Speech Bubble */}
+      <div className={`absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white border border-stone-100 px-3 py-2 rounded-2xl shadow-sm text-xs text-gray-600 whitespace-nowrap transition-all duration-300 z-10 ${message ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-2'}`}>
+        {message}
+        <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white border-b border-r border-stone-100 rotate-45"></div>
+      </div>
+
+      {/* The Dino Emoji with Animations */}
+      <div className={`text-[80px] leading-none filter drop-shadow-sm cursor-default select-none transition-transform duration-500 ${isHappy ? 'animate-bounce scale-110' : 'hover:scale-105'}`}>
+        🦕
+      </div>
+      
+      {/* Sparkles when happy */}
+      {isHappy && (
+        <>
+          <div className="absolute top-0 left-0 text-xl animate-ping">✨</div>
+          <div className="absolute top-4 right-0 text-xl animate-ping delay-100">🎉</div>
+        </>
+      )}
+    </div>
+  );
+};
+
+// --- Encouraging Messages Library ---
+const MESSAGES = {
+  water: [
+    "咕嚕咕嚕～好清爽！💦",
+    "皮膚變水水了～✨",
+    "補充能量，再來一杯！💪",
+    "好習慣 +1！🥰",
+    "哇！你好健康喔！🥤"
+  ],
+  habit: [
+    "你今天超棒的！🌟",
+    "一點一滴都在累積！🌱",
+    "為你感到驕傲！💖",
+    "太厲害了！繼續保持～🔥",
+    "這就是成長的聲音！🎵"
+  ],
+  goal: [
+    "目標達成！太神啦！🎉",
+    "哇！你真的做到了！🏆",
+    "夢想又近了一步！🚀",
+    "閃閃發光的你！✨",
+    "太感動了！抱一個！🦕"
+  ],
+  default: "GENAE Life OS"
+};
+
+// --- Quotes Library ---
+const QUOTES = [
+  { en: "Be gentle with yourself.", zh: "對自己溫柔一點。" },
+  { en: "Slow down.", zh: "慢下來，風景很美。" },
+  { en: "Trust the timing.", zh: "相信生命的時區。" },
+  { en: "You are enough.", zh: "你已經足夠好了。" },
+  { en: "Protect your peace.", zh: "守護你內心的平靜。" },
+  { en: "Small steps count.", zh: "每一小步都算數。" },
+  { en: "Rest is productive.", zh: "休息也是一種生產力。" },
+  { en: "Stay patient.", zh: "保持耐心，花會開的。" },
+  { en: "Focus on the good.", zh: "專注在美好的事物上。" },
+  { en: "Progress, not perfection.", zh: "追求進步，而非完美。" },
+  { en: "You are loved.", zh: "你被深深愛著。" },
+  { en: "Keep going.", zh: "繼續前進。" },
+  { en: "You matter.", zh: "你很重要。" },
+  { en: "The best is yet to come.", zh: "最好的尚未到來。" }
+];
+
+// --- Helper Components ---
+const Card = ({ title, icon: Icon, colorClass, children, className = "" }) => (
+  <div className={`bg-white p-5 rounded-3xl shadow-sm border border-stone-50 mb-4 hover:shadow-md transition-shadow ${className}`}>
+    {title && (
+      <div className="flex justify-between items-center mb-4">
+        <div className="flex items-center gap-2">
+          {Icon && <div className={`p-1.5 rounded-full ${colorClass || 'bg-gray-100'} text-gray-600`}>
+            <Icon size={16} />
+          </div>}
+          <h3 className="font-bold text-gray-700 text-sm tracking-wide">{title}</h3>
+        </div>
+      </div>
+    )}
+    {children}
+  </div>
+);
+
+const IconButton = ({ icon: Icon, label, active, onClick }) => (
+  <button 
+    onClick={onClick}
+    className={`flex flex-col items-center justify-center w-full py-2 transition-all duration-300 ${active ? 'text-[#C5A059] -translate-y-1' : 'text-gray-300 hover:text-gray-400'}`}
+  >
+    <Icon size={24} strokeWidth={active ? 2.5 : 2} />
+    <span className="text-[10px] mt-1 font-medium">{label}</span>
+  </button>
+);
+
+// --- Main App ---
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState('daily');
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  
+  // Interaction States
+  const [petMessage, setPetMessage] = useState("我是你的恐龍夥伴 🦕");
+  const [isDinoHappy, setIsDinoHappy] = useState(false);
+  
+  const [waterCount, setWaterCount] = useState(3);
+  const [mood, setMood] = useState('neutral');
+  const [currentQuote, setCurrentQuote] = useState(QUOTES[0]);
+  
+  // Data States
+  const [habits, setHabits] = useState([
+    { id: 1, text: "冥想 10 分鐘", done: true },
+    { id: 2, text: "閱讀 10 頁", done: false },
+  ]);
+  const [newHabit, setNewHabit] = useState("");
+  const [journalText, setJournalText] = useState("");
+
+  const [goals, setGoals] = useState([
+    { id: 1, text: "年度存款計畫", current: 40, target: 100 },
+    { id: 2, text: "體態雕塑", current: 65, target: 100 },
+  ]);
+
+  // --- Logic Functions ---
+
+  const triggerFeedback = (type) => {
+    // 1. Animation
+    setIsDinoHappy(true);
+    setTimeout(() => setIsDinoHappy(false), 2000);
+
+    // 2. Pick random message
+    const messages = MESSAGES[type] || [MESSAGES.default];
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+    setPetMessage(randomMsg);
+
+    // 3. Clear message after delay
+    setTimeout(() => setPetMessage(""), 3500);
+  };
+
+  const handleWater = (idx) => {
+    setWaterCount(idx + 1);
+    triggerFeedback('water');
+  };
+
+  const addHabit = (e) => {
+    if (e.key === 'Enter' && newHabit.trim()) {
+      setHabits([...habits, { id: Date.now(), text: newHabit, done: false }]);
+      setNewHabit("");
+      triggerFeedback('habit');
+    }
+  };
+
+  const toggleHabit = (id) => {
+    setHabits(habits.map(h => {
+        if (h.id === id) {
+            const isDone = !h.done;
+            if (isDone) triggerFeedback('habit');
+            return { ...h, done: isDone };
+        }
+        return h;
+    }));
+  };
+
+  const handleGoalChange = (index, newValue, target) => {
+    const newGoals = [...goals];
+    newGoals[index].current = newValue;
+    setGoals(newGoals);
+
+    // Trigger celebration if goal reached 100%
+    if (newValue == target) {
+        triggerFeedback('goal');
+    }
+  };
+
+  const refreshQuote = () => {
+    let random;
+    do {
+      random = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+    } while (random === currentQuote);
+    setCurrentQuote(random);
+    setPetMessage("這句靈感送給你 ✨");
+    setTimeout(() => setPetMessage(""), 2000);
+  };
+
+  // --- Views ---
+
+  // 1. DAILY VIEW
+  const DailyView = () => (
+    <div className="space-y-4 animate-fade-in pb-24">
+      {/* Header & Dino */}
+      <div className="flex justify-between items-end mb-2 px-2">
+        <div>
+           <p className="text-xs text-gray-400 font-bold tracking-widest uppercase">Dec 31, Wed</p>
+           <h1 className="text-2xl font-serif text-gray-800 font-bold mt-1">Hello, Genae</h1>
+        </div>
+        {/* Pass props to control animation */}
+        <DinoMascot message={petMessage} isHappy={isDinoHappy} />
+      </div>
+
+      {/* Quote Card */}
+      <div className="bg-[#FDFBF7] p-5 rounded-3xl border border-[#C5A059]/20 relative overflow-hidden group hover:shadow-sm transition-all">
+         <div className="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button onClick={refreshQuote} className="text-[#C5A059] hover:rotate-180 transition-transform duration-500 bg-white rounded-full p-1 shadow-sm">
+               <RefreshCw size={14} />
+            </button>
+         </div>
+         <div className="flex gap-3">
+            <Quote size={20} className="text-[#C5A059] flex-shrink-0 fill-[#C5A059]/20" />
+            <div className="flex-1">
+               <p className="text-gray-700 font-serif italic text-lg leading-relaxed">{currentQuote.en}</p>
+               <p className="text-xs text-gray-400 mt-2 tracking-wide">{currentQuote.zh}</p>
+            </div>
+         </div>
+      </div>
+
+      {/* Grid: Water & Mood */}
+      <div className="grid grid-cols-2 gap-3">
+        <Card title="喝水" icon={Droplets} colorClass="bg-blue-100">
+          <div className="grid grid-cols-4 gap-2">
+            {[...Array(8)].map((_, i) => (
+              <button key={i} onClick={() => handleWater(i)} className={`aspect-square rounded-md transition-all duration-300 ${i < waterCount ? 'bg-blue-400 scale-100' : 'bg-blue-50 scale-90'}`} />
+            ))}
+          </div>
+          <p className="text-[10px] text-gray-400 mt-2 text-right">{waterCount}/8 杯</p>
+        </Card>
+        <Card title="心情" icon={Sparkles} colorClass="bg-yellow-100">
+           <div className="flex justify-between items-center h-full">
+              {['sad', 'neutral', 'happy'].map(m => (
+                <button key={m} onClick={() => { setMood(m); setPetMessage("心情記錄完成 📝"); setTimeout(() => setPetMessage(""), 2000); }} className={`text-2xl transition-transform ${mood === m ? 'scale-125' : 'opacity-40 grayscale'}`}>
+                  {m === 'sad' ? '😢' : m === 'neutral' ? '😐' : '🤩'}
+                </button>
+              ))}
+           </div>
+        </Card>
+      </div>
+
+      {/* Habits */}
+      <Card title="原子習慣" icon={CheckCircle} colorClass="bg-green-100">
+         {habits.map(h => (
+           <div key={h.id} className="flex items-center mb-3 last:mb-0 group">
+             <button onClick={() => toggleHabit(h.id)} className={`w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center transition-colors ${h.done ? 'bg-[#C5A059] border-[#C5A059]' : 'border-gray-200'}`}>
+               {h.done && <CheckCircle size={12} className="text-white" />}
+             </button>
+             <span className={`flex-1 text-sm transition-all ${h.done ? 'text-gray-300 line-through' : 'text-gray-700'}`}>{h.text}</span>
+             <button onClick={() => setHabits(habits.filter(i => i.id !== h.id))}><Trash2 size={14} className="text-gray-300 opacity-0 group-hover:opacity-100" /></button>
+           </div>
+         ))}
+         <input 
+           type="text" 
+           placeholder="+ 新增習慣 (Enter)..." 
+           className="w-full mt-3 text-sm bg-transparent outline-none placeholder-gray-300"
+           value={newHabit}
+           onChange={(e) => setNewHabit(e.target.value)}
+           onKeyDown={addHabit}
+         />
+      </Card>
+
+      {/* Quick Actions */}
+      <div className="grid grid-cols-2 gap-3">
+         <button className="bg-white p-4 rounded-3xl border border-stone-50 flex items-center gap-3 hover:border-[#C5A059] transition-colors group">
+            <div className="bg-purple-50 p-2 rounded-full text-purple-400 group-hover:bg-purple-100"><Camera size={18} /></div>
+            <span className="text-xs font-bold text-gray-600">OOTD</span>
+         </button>
+         <button className="bg-white p-4 rounded-3xl border border-stone-50 flex items-center gap-3 hover:border-[#C5A059] transition-colors group">
+            <div className="bg-orange-50 p-2 rounded-full text-orange-400 group-hover:bg-orange-100"><Coffee size={18} /></div>
+            <span className="text-xs font-bold text-gray-600">飲食</span>
+         </button>
+      </div>
+    </div>
+  );
+
+  // 2. TIMELINE VIEW
+  const CalendarView = () => {
+    const days = Array.from({ length: 31 }, (_, i) => i + 1);
+    return (
+      <div className="space-y-4 animate-fade-in pb-24">
+         <div className="px-2 mb-2">
+            <h1 className="text-2xl font-serif text-gray-800 font-bold">Timeline</h1>
+            <p className="text-xs text-gray-400">時光回顧</p>
+         </div>
+
+         <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-50">
+            <div className="flex justify-between items-center mb-4">
+               <h2 className="font-bold text-gray-700">December 2025</h2>
+               <div className="flex gap-2">
+                  <button className="p-1 hover:bg-gray-100 rounded"><ChevronRight size={16} className="rotate-180" /></button>
+                  <button className="p-1 hover:bg-gray-100 rounded"><ChevronRight size={16} /></button>
+               </div>
+            </div>
+            <div className="grid grid-cols-7 gap-2 text-center text-xs mb-2 text-gray-300 font-bold">
+               {['S','M','T','W','T','F','S'].map(d => <div key={d}>{d}</div>)}
+            </div>
+            <div className="grid grid-cols-7 gap-y-3 gap-x-1">
+               <div className="col-span-3"></div>
+               {days.map(d => (
+                 <button 
+                   key={d}
+                   onClick={() => setSelectedDate(new Date(2025, 11, d))}
+                   className={`h-8 w-8 rounded-full flex flex-col items-center justify-center text-xs relative transition-all ${selectedDate.getDate() === d ? 'bg-[#C5A059] text-white shadow-lg' : 'text-gray-600 hover:bg-gray-100'}`}
+                 >
+                   {d}
+                   {d < 31 && <div className={`w-1 h-1 rounded-full mt-0.5 ${d % 4 === 0 ? 'bg-yellow-400' : 'bg-gray-200'}`}></div>}
+                 </button>
+               ))}
+            </div>
+         </div>
+
+         <Card title={`${selectedDate.getDate()} Dec 的日記`} icon={BookOpen} colorClass="bg-gray-100">
+            <div className="space-y-4">
+               <div className="flex items-start gap-3">
+                  <div className="bg-yellow-50 p-2 rounded-full text-yellow-500 text-xs">Mood</div>
+                  <div>
+                     <p className="text-sm text-gray-700">🙂 平靜充實</p>
+                  </div>
+               </div>
+               <div className="pt-2 border-t border-gray-100">
+                  <textarea 
+                    className="w-full bg-[#F9F9F9] rounded-xl p-3 text-sm text-gray-600 outline-none resize-none focus:bg-white focus:ring-1 focus:ring-[#C5A059]"
+                    rows="4"
+                    placeholder="點擊輸入那天的回憶..."
+                    defaultValue={selectedDate.getDate() === 31 ? journalText : ""}
+                    onChange={(e) => setJournalText(e.target.value)}
+                  />
+               </div>
+            </div>
+         </Card>
+      </div>
+    );
+  };
+
+  // 3. VISION VIEW
+  const VisionView = () => (
+    <div className="space-y-4 animate-slide-up pb-24">
+        <div className="px-2 mb-2">
+            <h1 className="text-2xl font-serif text-gray-800 font-bold">Vision</h1>
+            <p className="text-xs text-gray-400">種下你的未來</p>
+        </div>
+
+        <div className="bg-[#2C2C2C] p-6 rounded-3xl text-white shadow-lg relative overflow-hidden group">
+           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#C5A059] rounded-full blur-[60px] opacity-20 group-hover:opacity-30 transition-opacity"></div>
+           <h2 className="font-serif text-xl mb-1">2025 Keywords</h2>
+           <p className="text-xs text-gray-400 mb-6">保持專注，溫柔堅定</p>
+           <div className="flex flex-wrap gap-2 relative z-10">
+              <span className="px-3 py-1 bg-white/10 rounded-full text-xs border border-white/10 backdrop-blur-md">✨ 勇敢</span>
+              <span className="px-3 py-1 bg-white/10 rounded-full text-xs border border-white/10 backdrop-blur-md">🌿 平靜</span>
+              <span className="px-3 py-1 bg-white/10 rounded-full text-xs border border-white/10 backdrop-blur-md">💰 自由</span>
+              <button className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs hover:bg-white/20">+</button>
+           </div>
+        </div>
+
+        <Card title="年度目標進度" icon={Target} colorClass="bg-red-100">
+           {goals.map((g, i) => (
+             <div key={g.id} className="mb-4 last:mb-0">
+                <div className="flex justify-between text-xs mb-1">
+                   <span className="text-gray-700 font-medium">{g.text}</span>
+                   <span className="text-[#C5A059]">{Math.round((g.current/g.target)*100)}%</span>
+                </div>
+                <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                   <div className="h-full bg-[#C5A059] transition-all duration-1000" style={{width: `${(g.current/g.target)*100}%`}}></div>
+                </div>
+                {/* Interactive Slider */}
+                <input 
+                  type="range" min="0" max={g.target} value={g.current} 
+                  onChange={(e) => handleGoalChange(i, parseInt(e.target.value), g.target)}
+                  className="w-full mt-2 h-1 opacity-0 hover:opacity-100 cursor-pointer"
+                />
+             </div>
+           ))}
+        </Card>
+
+        <Card title="設定" icon={Settings} colorClass="bg-gray-200">
+            <div className="space-y-1">
+               <div className="flex justify-between items-center text-sm text-gray-600 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+                  <span>匯出備份</span>
+                  <ChevronRight size={16} className="text-gray-300" />
+               </div>
+               <div className="flex justify-between items-center text-sm text-gray-600 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+                  <span>提醒通知</span>
+                  <div className="w-8 h-4 bg-[#C5A059] rounded-full relative"><div className="w-3 h-3 bg-white rounded-full absolute right-0.5 top-0.5"></div></div>
+               </div>
+            </div>
+        </Card>
+    </div>
+  );
+
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-[#EAEAEA] font-sans">
+      <div className="w-full max-w-[390px] h-[844px] bg-[#FAFAFA] relative shadow-2xl overflow-hidden flex flex-col sm:rounded-[40px] sm:border-[8px] sm:border-[#2C2C2C]">
+        
+        <div className="flex-1 overflow-y-auto px-5 py-6 scrollbar-hide pt-12">
+           {activeTab === 'daily' && <DailyView />}
+           {activeTab === 'calendar' && <CalendarView />}
+           {activeTab === 'vision' && <VisionView />}
+        </div>
+
+        {activeTab === 'daily' && (
+          <div className="absolute bottom-24 right-6 z-30 animate-slide-up">
+             <button onClick={() => triggerFeedback('default')} className="w-14 h-14 bg-[#2C2C2C] rounded-full shadow-lg flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all">
+                <Plus size={28} />
+             </button>
+          </div>
+        )}
+
+        <div className="h-[90px] bg-white border-t border-gray-100 flex justify-around items-center pb-6 absolute bottom-0 w-full z-20 px-4">
+          <IconButton icon={Home} label="日常" active={activeTab === 'daily'} onClick={() => setActiveTab('daily')} />
+          <IconButton icon={CalendarIcon} label="時光" active={activeTab === 'calendar'} onClick={() => setActiveTab('calendar')} />
+          <IconButton icon={Target} label="願景" active={activeTab === 'vision'} onClick={() => setActiveTab('vision')} />
+        </div>
+
+      </div>
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        .animate-slide-up { animation: slideUp 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      `}</style>
+    </div>
+  );
+};
+
+export default App;
