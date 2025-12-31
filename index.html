@@ -5,29 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GENAE Life OS 🦕</title>
     
-    <!-- 1. 引入 Tailwind CSS (美化樣式) -->
+    <!-- 1. Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- 2. 引入 React 和核心套件 -->
+    <!-- 2. React 核心 -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <!-- 3. 引入圖示庫 Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 3. Lucide 圖示庫 (修正為穩定的 UMD 版本) -->
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
 
     <style>
-        /* 隱藏捲軸但保持功能 */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        /* 自定義動畫 */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
-        
         @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .animate-slide-up { animation: slideUp 0.4s ease-out forwards; }
-        
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
         .font-serif { font-family: "Times New Roman", Times, serif; }
     </style>
@@ -39,11 +34,17 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // --- 處理圖示 (將 Lucide 圖示轉換為 React 元件) ---
+        // --- 安全的圖示元件 ---
         const Icon = ({ name, size = 24, className, ...props }) => {
-            const iconData = lucide.icons[name];
+            // 檢查 lucide 是否載入成功
+            if (!window.lucide || !window.lucide.icons) {
+                return <span style={{fontSize: size}}>□</span>; // 載入失敗時的替代符號
+            }
+            
+            const iconData = window.lucide.icons[name];
             if (!iconData) return null;
             
+            // 將 Lucide 的 SVG 數據轉換為 React 元素
             return (
                 <svg
                     {...iconData.attrs}
@@ -52,16 +53,15 @@
                     className={className}
                     {...props}
                     dangerouslySetInnerHTML={{
-                        __html: iconData.children.map(child => {
+                        __html: iconData.children ? iconData.children.map(child => {
                             const [tag, attrs] = child;
                             return `<${tag} ${Object.entries(attrs).map(([k, v]) => `${k}="${v}"`).join(' ')} />`;
-                        }).join('')
+                        }).join('') : ''
                     }}
                 />
             );
         };
 
-        // 為了讓程式碼好讀，我們把圖示名稱對應好
         const CalendarIcon = (props) => <Icon name="Calendar" {...props} />;
         const CheckCircle = (props) => <Icon name="CheckCircle" {...props} />;
         const Plus = (props) => <Icon name="Plus" {...props} />;
@@ -82,18 +82,13 @@
         const DinoMascot = ({ message, isHappy }) => {
             return (
                 <div className="relative w-24 h-24 flex justify-center items-end group">
-                {/* 對話框 */}
                 <div className={`absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white border border-stone-100 px-3 py-2 rounded-2xl shadow-sm text-xs text-gray-600 whitespace-nowrap transition-all duration-300 z-10 ${message ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-2'}`}>
                     {message}
                     <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white border-b border-r border-stone-100 rotate-45"></div>
                 </div>
-
-                {/* 恐龍 Emoji + 動畫 */}
                 <div className={`text-[80px] leading-none filter drop-shadow-sm cursor-default select-none transition-transform duration-500 ${isHappy ? 'animate-bounce scale-110' : 'hover:scale-105'}`}>
                     🦕
                 </div>
-                
-                {/* 開心特效 */}
                 {isHappy && (
                     <React.Fragment>
                     <div className="absolute top-0 left-0 text-xl animate-ping">✨</div>
@@ -104,7 +99,6 @@
             );
         };
 
-        // --- 資料庫 ---
         const MESSAGES = {
             water: ["咕嚕咕嚕～好清爽！💦", "皮膚變水水了～✨", "補充能量，再來一杯！💪", "好習慣 +1！🥰", "哇！你好健康喔！🥤"],
             habit: ["你今天超棒的！🌟", "一點一滴都在累積！🌱", "為你感到驕傲！💖", "太厲害了！繼續保持～🔥", "這就是成長的聲音！🎵"],
@@ -129,7 +123,6 @@
             { en: "The best is yet to come.", zh: "最好的尚未到來。" }
         ];
 
-        // --- UI 小元件 ---
         const Card = ({ title, icon: IconComponent, colorClass, children, className = "" }) => (
             <div className={`bg-white p-5 rounded-3xl shadow-sm border border-stone-50 mb-4 hover:shadow-md transition-shadow ${className}`}>
                 {title && (
@@ -156,20 +149,15 @@
             </button>
         );
 
-        // --- 主程式 App ---
         const App = () => {
             const [activeTab, setActiveTab] = useState('daily');
             const [selectedDate, setSelectedDate] = useState(new Date());
-            
-            // 互動狀態
             const [petMessage, setPetMessage] = useState("我是你的恐龍夥伴 🦕");
             const [isDinoHappy, setIsDinoHappy] = useState(false);
-            
             const [waterCount, setWaterCount] = useState(3);
             const [mood, setMood] = useState('neutral');
             const [currentQuote, setCurrentQuote] = useState(QUOTES[0]);
             
-            // 資料狀態
             const [habits, setHabits] = useState([
                 { id: 1, text: "冥想 10 分鐘", done: true },
                 { id: 2, text: "閱讀 10 頁", done: false },
@@ -182,11 +170,9 @@
                 { id: 2, text: "體態雕塑", current: 65, target: 100 },
             ]);
 
-            // 互動邏輯
             const triggerFeedback = (type) => {
                 setIsDinoHappy(true);
                 setTimeout(() => setIsDinoHappy(false), 2000);
-
                 const messages = MESSAGES[type] || [MESSAGES.default];
                 const randomMsg = messages[Math.floor(Math.random() * messages.length)];
                 setPetMessage(randomMsg);
@@ -236,7 +222,6 @@
                 setTimeout(() => setPetMessage(""), 2000);
             };
 
-            // --- 視圖元件 ---
             const DailyView = () => (
                 <div className="space-y-4 animate-fade-in pb-24">
                     <div className="flex justify-between items-end mb-2 px-2">
@@ -423,7 +408,6 @@
             );
         };
 
-        // 渲染到頁面上
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
